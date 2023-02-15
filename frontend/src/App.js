@@ -34,7 +34,7 @@ function App() {
     formData.append('excel', file);
     try {
       const response = await api.post('/', formData);
-      console.log(response.data);
+      alert(response.data);
     } catch (error) {
       alert("Arquivo Invalido");
     }
@@ -43,11 +43,13 @@ function App() {
   return (
     <div className="App">
       <h1>Formulário de Envio Excel</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Clique aqui para enviar seu arquivo xlsx:</label>
-        <input type="file" name="excel" onChange={handleFileChange} />
-        <button type="submit">Enviar</button>
-      </form>
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <label>Clique aqui para enviar seu arquivo xlsx:</label>
+          <input type="file" name="excel" onChange={handleFileChange} style={{margin: "20px 20px 20px 0"}}/>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
       <div className="container">
         <TabelaPessoas pessoas={users} />
         <button onClick={handleGet}>Buscar Pessoas</button>
