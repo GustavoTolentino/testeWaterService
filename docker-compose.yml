@@ -1,0 +1,25 @@
+services:
+  front:
+    build: ./frontend
+    networks:
+      app:
+        ipv4_address: 10.0.11.3
+    ports:
+      - "3001:3000"
+  back:
+    build: ./backend
+    networks:
+      app:
+        ipv4_address: 10.0.11.4
+    volumes:
+      - ./back:/back
+    ports:
+      - "3000:3000"
+
+
+networks:
+  app:
+    driver: bridge
+    ipam: 
+      config: 
+        - subnet: 10.0.11.0/24

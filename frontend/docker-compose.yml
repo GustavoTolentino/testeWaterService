@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  node:
+    build: .
+    networks:
+      - app:
+          ipv4: 10.0.11.3
+    ports:
+     - '3000:3000'
+    # volumes:
+    #   - ./:/usr/app
+    # working_dir: /frontend
+    # command: 'npm start'
+  
+
+networks:
+  app:
+    driver: bridge
+    ipam: 
+      config: 
+        - subnet: 10.0.11.0/24
